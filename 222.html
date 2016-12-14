@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    /*#cf::after{content: ""; display: table; clear: both;}*/
+    a{ text-decoration: none; cursor: pointer;}
+    body{ background: #f8f8f8}
+    #qw{width: 450px; height: 50px; margin: 0 auto; width: 450px; border-bottom: 1px solid #f9f9f9; line-height: 50px; text-align: center;}
+    .well{ width: 50px; border-radius: 25px; outline: none; background: #fff; margin: 0 50px; color: red;}
+      b{
+        color: green; font-size: 18px;
+      }
+      #qe{ margin: 0 auto; width: 450px;}
+      .top{ width: 450px; height: 30px; border-bottom: 1px solid #aaa; line-height: 30px;}
+      .top span{float: right; color: red}
+      #big{ width: 450px; height: 400px; margin: 0 auto;}
+      #keep,#move{ font-size: 12px; color: #ccc; margin-left:20px; }
+      #keep{ color: red;}
+      #span{ float: left; }
+    </style>
+  </head>
+  <body>
+    <div id="qw">
+      <b>麻辣</b> <input type="button" value="加菜" class="well"> <b>菜馆</b>
+    </div>
+    <div id="qe">
+        <div class="top">
+            <a href="#">菜单</a> <span style="font-size:12px">三 送 一</span>
+        </div>
+    </div>
+
+    <script>
+    var well = document.querySelector('.well');
+    well.onclick=function(){
+      var macu = document.createElement('div');
+      macu.id = 'mc';
+      macu.style.width='450px';
+      macu.style.height='30px';
+      macu.style.margin='0 auto';
+      macu.style.lineHeight='30px';
+      macu.style.borderBottom='1px solid #aaa';
+      // var txt = document.createTextNode('小青蛙');  //定义添加文本
+      // macu.appendChild(txt);                       //添加文本到当前的div中
+      document.body.appendChild(macu);
+      var sIn = document.createElement('span');
+      sIn.id = 'span';
+      sIn.innerHTML = '';
+      sIn.style.float = 'right';
+      macu.appendChild(sIn);
+      //
+      var oIn = document.createElement('input');
+      oIn.id = 'iput';
+      oIn.style.width = '300px'
+      oIn.value = '小青蛙';
+      macu.appendChild(oIn);
+      oIn.focus();
+
+      //
+      var mIn = document.createElement('a');
+      mIn.id = 'move';
+      mIn.innerHTML = '删除';
+      mIn.style.float = 'right';
+      macu.appendChild(mIn);
+      //
+      var kIn = document.createElement('a');
+      kIn.id = 'keep';
+      kIn.innerHTML = '保存';
+      kIn.style.float = 'right';
+      macu.appendChild(kIn);
+      //
+      kIn.onclick = function(){
+        sIn.style.float='left';
+        if (kIn.innerHTML=='保存') {
+            sIn.innerHTML = oIn.value;
+            sIn.style.display='block';
+            oIn.style.display='none';
+            kIn.innerHTML='编辑';
+            if (oIn.value=='') {
+              alert('不差钱！！')
+            }
+        }else {
+          kIn.innerHTML='保存';
+          oIn.style.display='inline-block';
+          oIn.focus();
+          sIn.style.display='none';
+          oIn.value = sIn.innerHTML;
+        }
+      }
+      //
+      mIn.onclick = function(){
+        document.body.removeChild(macu);
+      }
+    }
+
+    </script>
+  </body>
+</html>
